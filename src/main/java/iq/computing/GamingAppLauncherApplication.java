@@ -15,7 +15,6 @@ public class GamingAppLauncherApplication {
                     new AnnotationConfigApplicationContext
                             (GamingAppLauncherApplication.class)){
             context.getBean(GameRunner.class).run();
-
             Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
         }
     }
