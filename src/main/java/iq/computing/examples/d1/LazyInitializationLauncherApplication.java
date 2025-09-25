@@ -15,12 +15,12 @@ class BusinessLogic{
 
     // I must have to not use classB here to be lazyily initialization. for this I have to use a constructor,
     // so it cannot be able to load the dependency of classB, bcz it is autowiring the dependency and it is eagerly initialized
-    public BusinessLogic(ClassA classA, ClassB classB) {
-        super();
-        System.out.println("Constructor for both - Class-A & Class-B =" + classA + "-" + classB);
-        this.classA = classA;
-        this.classB = classB;
-    }
+//    public BusinessLogic(ClassA classA, ClassB classB) {
+//        super();
+//        System.out.println("Constructor for both - Class-A & Class-B =" + classA + "-" + classB);
+//        this.classA = classA;
+//        this.classB = classB;
+//    }
 
 // if above constructor is executed then result: ->
 //Lazy Initialization - ClassA
@@ -30,11 +30,11 @@ class BusinessLogic{
 //    Lazy Initialization - ClassA
 //    Constructor for both - Class-A & Class-B =iq.computing.examples.d1.dependencies.ClassA@dbf57b3-null
 
-//    public BusinessLogic(ClassA classA) {
-//        super();
-//        System.out.println("Constructor for both - Class-A & Class-B =" + classA + "-" + classB);
-//        this.classA = classA;
-//    }
+    public BusinessLogic(ClassA classA) {
+        super();
+        System.out.println("Constructor for both - Class-A & Class-B =" + classA + "-" + classB);
+        this.classA = classA;
+    }
 
     @Override
     public String toString() {
@@ -54,7 +54,8 @@ public class LazyInitializationLauncherApplication {
         try(var context =
                     new AnnotationConfigApplicationContext
                             (LazyInitializationLauncherApplication.class)){
-
+            // When I use this lazily-initialized bean, then only it will be created.
+            context.getBean(ClassB.class);
 //            Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 //            System.out.println(context.getBean(BusinessLogic.class));
         }
