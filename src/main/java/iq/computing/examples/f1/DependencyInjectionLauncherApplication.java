@@ -1,53 +1,43 @@
 package iq.computing.examples.f1;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
+//@Component
+//class NormalClass{
+//    DependentClass dependentClass;
+//    NormalClass(DependentClass dependentClass){
+//        this.dependentClass = dependentClass;
+//    }
+//    @PostConstruct
+//    void initialize(){
+//        dependentClass.getEverythingReady();
+//    }
+//    @PreDestroy
+//    void destroy(){
+//        System.out.println("Cleanup Activities");
+//    }
+//}
+//
+//@Component
+//class DependentClass{
+//    void getEverythingReady(){
+//        System.out.println("Everything is ready...");
+//    }
+//
+//}
+//
+//@Configuration
+//@ComponentScan
+//public class PreConstructAndPostDestroyLauncherApplication {
+//    public static void main(String[] args) {
+//        try(var context =
+//                    new AnnotationConfigApplicationContext
+//                            (PreConstructAndPostDestroyLauncherApplication.class)){
+//            Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+//        }
+//    }
+//}
 
-import java.util.Arrays;
 
-@Component
-class NormalClass{
-    DependentClass dependentClass;
-    NormalClass(DependentClass dependentClass){
-        this.dependentClass = dependentClass;
-    }
-    @PostConstruct
-    void initialize(){
-        dependentClass.getEverythingReady();
-    }
-    @PreDestroy
-    void destroy(){
-        System.out.println("Cleanup Activities");
-    }
-}
-
-@Component
-class DependentClass{
-    void getEverythingReady(){
-        System.out.println("Everything is ready...");
-    }
-
-}
-
-@Configuration
-@ComponentScan
-public class PreConstructAndPostDestroyLauncherApplication {
-    public static void main(String[] args) {
-        try(var context =
-                    new AnnotationConfigApplicationContext
-                            (PreConstructAndPostDestroyLauncherApplication.class)){
-            Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
-        }
-    }
-}
-
-/*
 // Why exception when constructor overloaded.
-package iq.computing.examples.a1;
 
 
 import iq.computing.examples.a1.dependencies.DependencyOne;
@@ -107,7 +97,6 @@ public class DependencyInjectionLauncherApplication {
         }
     }
 }
-*/
 
 /*
 // Setter-Based Injection
